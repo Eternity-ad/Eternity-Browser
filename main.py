@@ -59,6 +59,7 @@ class MainWindow(QMainWindow):
         navbar.addWidget(self.url_bar)
 
         self.browser.urlChanged.connect(self.update_url)
+# ========================================================================================================================
     # navbar2
         tab1 = QAction('Main', self)
         tab1.triggered.connect(self.main_tab1)
@@ -78,7 +79,7 @@ class MainWindow(QMainWindow):
         new_btn = QAction('Brave', self)
         new_btn.triggered.connect(self.navigate_tab)
         navbar2.addAction(new_btn)
-
+# =========================================================================================================================
         new_btn1 = QAction('TicTacToe', self)
         new_btn1.triggered.connect(self.navigate_tab1)
         navbar2.addAction(new_btn1)
@@ -94,7 +95,10 @@ class MainWindow(QMainWindow):
         flipgame = QAction('Flip Game', self)
         flipgame.triggered.connect(self.flipgamef)
         navbar2.addAction(flipgame)
-
+        rimage = QAction('RandomImage', self)
+        rimage.triggered.connect(self.randomimagef)
+        navbar2.addAction(rimage)
+# =========================================================================================================================
 #functions
     def navigate_home(self):
         self.browser.setUrl(QUrl('http://yash.brizy.site'))
@@ -120,6 +124,11 @@ class MainWindow(QMainWindow):
         self.browser.setUrl(QUrl('https://bit.ly/bullseyegameop'))
     def flipgamef(self):
         self.browser.setUrl(QUrl('https://bit.ly/flipgameop'))
+    def randomimagef(self):
+        self.browser.setUrl(QUrl('https://bit.ly/randomimagebyyash'))
+
+# ====================================================================================================================
+
     def update_url(self, q):
         self.url_bar.setText(q.toString())
 
@@ -147,6 +156,7 @@ class MainWindow(QMainWindow):
             html = self.tabs.currentWidget().page().toHtml()
             with open(filename, 'w') as f:
                 f.write(html.encode('utf8'))
+# =================================================================================================================
 app = QApplication(sys.argv)
 QApplication.setApplicationName('Intergrity Browser')
 window = MainWindow()
