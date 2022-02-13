@@ -8,11 +8,12 @@ from PyQt5.QtWebEngineWidgets import *
 # Yash_OP
 # AlwaysBees
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.browser = QWebEngineView()
-        self.browser.setUrl(QUrl('http://google.com'))
+        self.browser.setUrl(QUrl('https://www.bing.com/?toWww=1&redig=375257EAD25C4BF5AA82551D2405763A'))
         self.setCentralWidget(self.browser)
         self.showMaximized()
 
@@ -20,6 +21,9 @@ class MainWindow(QMainWindow):
         navbar = QToolBar()
         self.addToolBar(navbar)
 
+        navbar2 = QToolBar()
+        self.addToolBar(navbar2)
+        
         back_btn = QAction('Back', self)
         back_btn.triggered.connect(self.browser.back)
         navbar.addAction(back_btn)
@@ -36,6 +40,14 @@ class MainWindow(QMainWindow):
         home_btn.triggered.connect(self.navigate_home)
         navbar.addAction(home_btn)
 
+        new_btn = QAction('Google', self)
+        new_btn.triggered.connect(self.navigate_tab)
+        navbar.addAction(new_btn)
+
+        new_btn1 = QAction('Brave', self)
+        new_btn1.triggered.connect(self.navigate_tab1)
+        navbar.addAction(new_btn1)
+
         self.url_bar = QLineEdit()
         self.url_bar.returnPressed.connect(self.navigate_to_url)
         navbar.addWidget(self.url_bar)
@@ -44,6 +56,10 @@ class MainWindow(QMainWindow):
 
     def navigate_home(self):
         self.browser.setUrl(QUrl('http://yash.brizy.site'))
+    def navigate_tab(self):
+        self.browser.setUrl(QUrl('https://google.com'))
+    def navigate_tab1(self):
+        self.browser.setUrl(QUrl('https://search.brave.com'))
 
     def navigate_to_url(self):
         url = self.url_bar.text()
