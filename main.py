@@ -11,7 +11,7 @@ import sys
 
 # Please Install This Packages pip install PyQtWebEngine
 # pip install PyQt5
-# Uttkarsh
+# Uttkarsh_Pandey
 # Yash_OP
 # Integrity
 # AlwaysBees
